@@ -60,13 +60,13 @@ sub admin {
 	}
 }
 
-1; # End of Bot::BasicBot::Pluggable::Module::WWW::Shorten
+1; # End of Bot::BasicBot::Pluggable::Module::WWWShorten
 
 __END__
 
 =head1 NAME
 
-Bot::BasicBot::Pluggable::Module::WWW::Shorten - The great new Bot::BasicBot::Pluggable::Module::WWW::Shorten!
+Bot::BasicBot::Pluggable::Module::WWWShorten - The great new Bot::BasicBot::Pluggable::Module::WWWShorten!
 
 =head1 VERSION
 
@@ -78,8 +78,8 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Bot::BasicBot::Pluggable::Module::WWW::Shorten;
-    my $foo = Bot::BasicBot::Pluggable::Module::WWW::Shorten->new();
+    use Bot::BasicBot::Pluggable::Module::WWWShorten;
+    my $foo = Bot::BasicBot::Pluggable::Module::WWWShorten->new();
 
 =head1 EXPORT
 
@@ -99,7 +99,7 @@ Mario Domgoergen, C<< <mdom at cpan.org> >>
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-bot-basicbot-pluggable-module-www-shorten at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Bot-BasicBot-Pluggable-Module-WWW-Shorten>.  I will be notified, and then you'll
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Bot-BasicBot-Pluggable-Module-WWWShorten>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -109,7 +109,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Bot::BasicBot::Pluggable::Module::WWW::Shorten
+    perldoc Bot::BasicBot::Pluggable::Module::WWWShorten
 
 
 You can also look for information at:
@@ -118,19 +118,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Bot-BasicBot-Pluggable-Module-WWW-Shorten>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Bot-BasicBot-Pluggable-Module-WWWShorten>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Bot-BasicBot-Pluggable-Module-WWW-Shorten>
+L<http://annocpan.org/dist/Bot-BasicBot-Pluggable-Module-WWWShorten>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Bot-BasicBot-Pluggable-Module-WWW-Shorten>
+L<http://cpanratings.perl.org/d/Bot-BasicBot-Pluggable-Module-WWWShorten>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Bot-BasicBot-Pluggable-Module-WWW-Shorten/>
+L<http://search.cpan.org/dist/Bot-BasicBot-Pluggable-Module-WWWShorten/>
 
 =back
 

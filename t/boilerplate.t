@@ -48,7 +48,7 @@ TODO: {
     "placeholder date/time"       => qr(Date/time)
   );
 
-  module_boilerplate_ok('lib/Bot/BasicBot/Pluggable/Module/WWW/Shorten.pm');
+  module_boilerplate_ok('lib/Bot/BasicBot/Pluggable/Module/WWWShorten.pm');
 
 
 }

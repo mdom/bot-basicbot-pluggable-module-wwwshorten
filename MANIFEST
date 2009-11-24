@@ -2,7 +2,9 @@ Build.PL
 Changes
 MANIFEST
 README
-lib/Bot/BasicBot/Pluggable/Module/WWW/Shorten.pm
+lib/Bot/BasicBot/Pluggable/Module/WWWShorten.pm
 t/00-load.t
 t/pod-coverage.t
 t/pod.t
+Makefile.PL
+META.yml

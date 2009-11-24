@@ -3,7 +3,7 @@
 use Test::More tests => 1;
 
 BEGIN {
-    use_ok( 'Bot::BasicBot::Pluggable::Module::WWW::Shorten' );
+    use_ok( 'Bot::BasicBot::Pluggable::Module::WWWShorten' );
 }
 
-diag( "Testing Bot::BasicBot::Pluggable::Module::WWW::Shorten $Bot::BasicBot::Pluggable::Module::WWW::Shorten::VERSION, Perl $], $^X" );
+diag( "Testing Bot::BasicBot::Pluggable::Module::WWWShorten $Bot::BasicBot::Pluggable::Module::WWWShorten::VERSION, Perl $], $^X" );
