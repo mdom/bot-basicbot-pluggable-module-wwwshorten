@@ -3,14 +3,21 @@ use warnings;
 use Module::Build;
 
 my $builder = Module::Build->new(
-    module_name         => 'Bot::BasicBot::Pluggable::Module::WWW::Shorten',
-    license             => 'perl',
-    dist_author         => q{Mario Domgoergen <mdom@cpan.org>},
-    dist_version_from   => 'lib/Bot/BasicBot/Pluggable/Module/WWW/Shorten.pm',
-    build_requires => {
-        'Test::More' => 0,
+    module_name       => 'Bot::BasicBot::Pluggable::Module::WWWShorten',
+    license           => 'perl',
+    dist_author       => q{Mario Domgoergen <mdom@cpan.org>},
+    dist_version_from => 'lib/Bot/BasicBot/Pluggable/Module/WWWShorten.pm',
+    requires          => {
+        'parent'                   => 0,
+        'Bot::BasicBot::Pluggable' => '0.81',
+        'URI::Find::Rule'          => 0,
+        'Try::Tiny'                => 0,
+        'Module::Load'             => 0,
+        'HTML::HeadParser'         => 0,
+        'LWP::UserAgent'           => 0,
     },
-    add_to_cleanup      => [ 'Bot-BasicBot-Pluggable-Module-WWW-Shorten-*' ],
+    build_requires     => { 'Test::More' => 0, },
+    add_to_cleanup     => ['Bot-BasicBot-Pluggable-Module-WWWShorten-*'],
     create_makefile_pl => 'traditional',
 );
 
