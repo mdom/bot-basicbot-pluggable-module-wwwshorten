@@ -37,6 +37,7 @@ sub admin {
             my $ua = LWP::UserAgent->new(
                 env_proxy => 1,
                 timeout   => 30,
+                max_size  => 4096,   # bytes ... let hope title is in there... :)
             );
 
             my $response = $ua->get($uri);
