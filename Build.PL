@@ -13,7 +13,6 @@ my $builder = Module::Build->new(
         'URI::Find::Rule'          => 0,
         'Try::Tiny'                => 0,
         'Module::Load'             => 0,
-        'HTML::HeadParser'         => 0,
         'LWP::UserAgent'           => 0,
     },
     build_requires     => { 'Test::More' => 0, },

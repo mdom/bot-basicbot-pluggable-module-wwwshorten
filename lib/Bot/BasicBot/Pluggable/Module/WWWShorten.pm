@@ -6,61 +6,58 @@ use parent 'Bot::BasicBot::Pluggable::Module';
 use URI::Find::Rule;
 use Try::Tiny;
 use Module::Load;
-use HTML::HeadParser;
 use LWP::UserAgent;
 
 our $VERSION = '0.01';
 
 sub init {
-	my $self = shift;
-	$self->config({
-		service => 'TinyURL',
-	});
+    my $self = shift;
+    $self->config( { service => 'TinyURL', } );
 }
 
 sub admin {
-	my ($self,$message) = @_;
+    my ( $self, $message ) = @_;
 
-	my $body = $message->{body};
-	return if ! $body;
+    my $body = $message->{body};
+    return if !$body;
 
-	my @uris = map { $_->[1] } URI::Find::Rule->http->in($body);
-	return if ! @uris;
+    my @uris = map { $_->[1] } URI::Find::Rule->http->in($body);
+    return if !@uris;
 
-	my $service = $self->get('service');
-	my $module  = "WWW::Shorten::$service";
-	try { load $module } catch { die "Can't load service $service: $@" };
+    my $service = $self->get('service');
+    my $module  = "WWW::Shorten::$service";
+    try { load $module } catch { die "Can't load service $service: $@" };
 
-	$module->import('makeashorterlink');
-	for my $uri (@uris) {
-		my ($short_link,$title);
-		try {
-			$short_link = makeashorterlink($uri);
-			
-			my $ua = LWP::UserAgent->new(
-				env_proxy => 1,
-				timeout => 30,
-			);
+    $module->import('makeashorterlink');
+    for my $uri (@uris) {
+        my ( $short_link, $title );
+        try {
+            $short_link = makeashorterlink($uri);
 
-			my $response = $ua->get($uri);
-			die unless $response->is_success;
-			my $html = $response->content;
+            my $ua = LWP::UserAgent->new(
+                env_proxy => 1,
+                timeout   => 30,
+            );
 
-			my $parser = HTML::HeadParser->new;
-			1 while $parser->parse($html);
-			$title = $parser->header('Title');
-			
-		} catch {
-			die "Can't generate short link: $_";
-		};
-		
-		my $reply = $short_link;
-		$reply .= " [ $title ]" if $title;
-		$self->reply($message,$reply);
-	}
+            my $response = $ua->get($uri);
+            if (   $response->is_success
+                && $response->content_type eq 'text/html' )
+            {
+                $title = $parser->title;
+            }
+
+        }
+        catch {
+            die "Can't generate short link: $_";
+        };
+
+        my $reply = $short_link;
+        $reply .= " [ $title ]" if $title;
+        $self->reply( $message, $reply );
+    }
 }
 
-1; # End of Bot::BasicBot::Pluggable::Module::WWWShorten
+1;    # End of Bot::BasicBot::Pluggable::Module::WWWShorten
 
 __END__
 
