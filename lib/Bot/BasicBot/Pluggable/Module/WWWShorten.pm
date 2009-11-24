@@ -44,7 +44,7 @@ sub admin {
             if (   $response->is_success
                 && $response->content_type eq 'text/html' )
             {
-                $title = $parser->title;
+                $title = $response->title;
             }
 
         }
