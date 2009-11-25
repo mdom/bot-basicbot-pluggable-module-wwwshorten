@@ -26,10 +26,11 @@ VARIABLES
     Defaults to false.
 
   user_service
-  
-METHODS
-  help
-  admin
+    Specifies which service to use to actually shorten all urls. Accepts the
+    last part of the module name of all modules compatible with
+    WWW::Shorten, for example TinyURL, TinyClick or Shorl. Defaults to
+    TinyUrl.
+
 AUTHOR
     Mario Domgoergen, "<mdom at cpan.org>"
 
