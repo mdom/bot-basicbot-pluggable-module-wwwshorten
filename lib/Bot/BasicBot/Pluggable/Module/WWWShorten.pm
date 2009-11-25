@@ -8,11 +8,17 @@ use Try::Tiny;
 use Module::Load;
 use LWP::UserAgent;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub init {
     my $self = shift;
-    $self->config( { service => 'TinyURL', } );
+    $self->config(
+        {
+            user_service    => 'TinyURL',
+            user_min_length => 0,
+            user_addressed  => 0,
+        }
+    );
 }
 
 sub admin {
@@ -20,6 +26,7 @@ sub admin {
 
     my $body = $message->{body};
     return if !$body;
+    return if $self->get('user_addressed') && ! $message->{address};
 
     my @uris = map { $_->[1] } URI::Find::Rule->http->in($body);
     return if !@uris;
@@ -30,14 +37,16 @@ sub admin {
 
     $module->import('makeashorterlink');
     for my $uri (@uris) {
+        next if length $uri < $self->get('user_min_length');
         my ( $short_link, $title );
         try {
             $short_link = makeashorterlink($uri);
 
             my $ua = LWP::UserAgent->new(
                 env_proxy => 1,
-                timeout   => 30,
-                max_size  => 4096,   # bytes ... let hope title is in there... :)
+                timeout   => 30,    # seconds
+                max_size =>
+                  8192,    # bytes ... lets hope title is in the first bytes
             );
 
             my $response = $ua->get($uri);
@@ -64,31 +73,46 @@ __END__
 
 =head1 NAME
 
-Bot::BasicBot::Pluggable::Module::WWWShorten - The great new Bot::BasicBot::Pluggable::Module::WWWShorten!
+Bot::BasicBot::Pluggable::Module::WWWShorten - Shorten all urls
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+By loading this module your bot will check all messages for an url and
+will reply with an shortened url and its title if the url links to an
+html document. The bot will use TinyURL as default to generate a shorter
+uri but the module supports all services provided by L<WWW::Shorten>.
 
-Perhaps a little code snippet.
+ user> !load WWWShorten
+ bot > Okay.
+ user> http://www.heise.de
+ bot > http://tinyurl.com/48z [ heise online - Home ]
 
-    use Bot::BasicBot::Pluggable::Module::WWWShorten;
-    my $foo = Bot::BasicBot::Pluggable::Module::WWWShorten->new();
+=head1 VARIABLES
 
-=head1 EXPORT
+=head2 user_min_length
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+If this variable is set to a true value, only urls that are longer than
+C<user_min_length> are processed by this module. All shorter urls are
+ignored. Default to zero (aka false).
 
-=head1 FUNCTIONS
+=head2 user_addressed
 
-=head2 function1
+Ignore all messages that are not directly addressed for the bot. Defaults
+to false.
 
-=head2 function2
+=head2 user_service
+
+=head2 
+
+=head1 METHODS
+
+=head2 help
+
+=head2 admin
 
 =head1 AUTHOR
 
