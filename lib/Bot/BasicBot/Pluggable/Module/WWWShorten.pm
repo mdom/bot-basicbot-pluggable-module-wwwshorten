@@ -106,13 +106,10 @@ to false.
 
 =head2 user_service
 
-=head2 
-
-=head1 METHODS
-
-=head2 help
-
-=head2 admin
+Specifies which service to use to actually shorten all urls. Accepts
+the last part of the module name of all modules compatible with
+L<WWW::Shorten>, for example TinyURL, TinyClick or Shorl. Defaults
+to TinyUrl.
 
 =head1 AUTHOR
 
