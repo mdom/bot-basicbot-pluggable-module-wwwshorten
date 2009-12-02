@@ -31,7 +31,7 @@ sub admin {
     my @uris = map { $_->[1] } URI::Find::Rule->http->in($body);
     return if !@uris;
 
-    my $service = $self->get('service');
+    my $service = $self->get('user_service');
     my $module  = "WWW::Shorten::$service";
     try { load $module } catch { die "Can't load service $service: $@" };
 
