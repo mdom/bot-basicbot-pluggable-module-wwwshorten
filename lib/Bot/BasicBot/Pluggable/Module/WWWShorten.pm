@@ -8,7 +8,7 @@ use Try::Tiny;
 use Module::Load;
 use LWP::UserAgent;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub init {
     my $self = shift;
@@ -77,7 +77,7 @@ Bot::BasicBot::Pluggable::Module::WWWShorten - Shorten all urls
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =head1 SYNOPSIS
 

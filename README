@@ -2,7 +2,7 @@ NAME
     Bot::BasicBot::Pluggable::Module::WWWShorten - Shorten all urls
 
 VERSION
-    Version 0.02
+    Version 0.03
 
 SYNOPSIS
     By loading this module your bot will check all messages for an url and
@@ -49,18 +49,22 @@ SUPPORT
 
     You can also look for information at:
 
-    * RT: CPAN's request tracker
+    *   RT: CPAN's request tracker
+
         <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Bot-BasicBot-Pluggable-Mod
         ule-WWWShorten>
 
-    * AnnoCPAN: Annotated CPAN documentation
+    *   AnnoCPAN: Annotated CPAN documentation
+
         <http://annocpan.org/dist/Bot-BasicBot-Pluggable-Module-WWWShorten>
 
-    * CPAN Ratings
+    *   CPAN Ratings
+
         <http://cpanratings.perl.org/d/Bot-BasicBot-Pluggable-Module-WWWShor
         ten>
 
-    * Search CPAN
+    *   Search CPAN
+
         <http://search.cpan.org/dist/Bot-BasicBot-Pluggable-Module-WWWShorte
         n/>
 
